@@ -1,13 +1,16 @@
 <template>
-  <HelloWorld />
+  <v-app dark id="inspire">
+    <v-content>
+      <LoginCard/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
-
+import LoginCard from '@/components/LoginCard.vue'
   export default {
-    components: {
-      HelloWorld
+    components:{
+      LoginCard
     }
   }
 </script>
