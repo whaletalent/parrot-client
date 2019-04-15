@@ -16,6 +16,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/online', (req, res) =>{
+    res.send(users); 
+});
 
 const server = app.listen(port, () => {
     console.log(`running at port ${port}`);
