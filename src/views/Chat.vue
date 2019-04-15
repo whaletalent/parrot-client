@@ -49,14 +49,14 @@
         <v-tooltip bottom>
           <template v-slot:activator="{ on }">
             <BreadcrumbItem>
-              <v-btn icon href="https://github.com" target="_blank">
+              <v-btn icon href="https://github.com/whaletalent/parrot-client" target="_blank">
                 <v-icon v-on="on">fab fa-github-alt</v-icon>
               </v-btn>
             </BreadcrumbItem>
           </template>
           <span>See code on Github</span>
         </v-tooltip>
-        
+
         <v-avatar>
           <img src="@/assets/parrotIco.svg" alt="ParrotLogo">
         </v-avatar>
@@ -81,6 +81,8 @@
         <v-layout justify-center row wrap>
           <v-flex xs10>
             <v-text-field
+              :rules="this.rules"
+              maxlength="126"
               :color="this.userColor"
               v-model="message"
               append-outer-icon="send"
@@ -121,29 +123,32 @@ export default {
     userId: "",
     message: "",
     messages: [],
-    socket: io("https://api-parrot.herokuapp.com/")
+    rules: [v => v.length <= 125 || 'Max 125 characters'],
+    //socket: io("https://api-parrot.herokuapp.com/")
+    socket: io()
   }),
   methods: {
     sendMessage(e) {
       e.preventDefault();
-
-      this.socket.emit("SEND_MESSAGE", {
-        color: this.userColor,
-        user: this.user,
-        message: this.message
-      });
+      if(this.message){
+        this.socket.emit("SEND_MESSAGE", {
+          color: this.userColor,
+          user: this.user,
+          message: this.message
+        });
+      }
       this.message = "";
     },
     clearMessage() {
       this.message = "";
     },
-    openWindow(link){
-      let route = this.$router.resolve({path: link});
-      window.open(route.href, '_blank');
+    openWindow(link) {
+      let route = this.$router.resolve({ path: link });
+      window.open(route.href, "_blank");
       //window.open(link, "_blank");
     },
-    getUsersOnline(){
-      fetch("https://api-parrot.herokuapp.com/online", {
+    getUsersOnline() {
+      fetch("/online", {
         method: "get"
       })
         .then(response => response.json())
@@ -162,7 +167,7 @@ export default {
   },
   created() {
     if (this.socket.disconnected) {
-      setTimeout(() => {  
+      setTimeout(() => {
         this.responsePServer = {
           msg: "Parrot Server error. Try again later",
           color: "red",
@@ -227,4 +232,8 @@ export default {
     transform: rotate(360deg);
   }
 }
+div{
+  overflow-wrap: break-word !important;
+}
+
 </style>
