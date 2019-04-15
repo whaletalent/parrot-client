@@ -148,7 +148,7 @@ export default {
       //window.open(link, "_blank");
     },
     getUsersOnline() {
-      fetch("/online", {
+      fetch(__dirname + "/online", {
         method: "get"
       })
         .then(response => response.json())

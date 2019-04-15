@@ -3,6 +3,8 @@ const port = process.env.PORT || 8080
 
 const app = express()
 
+let users = []
+
 app.use(express.static(__dirname + "/dist/"))
 
 app.get(/.*/, (req, res) => {
@@ -14,9 +16,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/online', function(req, res){
-    res.send(users); 
-});
 
 const server = app.listen(port, () => {
     console.log(`running at port ${port}`);
