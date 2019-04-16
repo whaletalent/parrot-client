@@ -64,7 +64,8 @@
       <v-content>
         <v-container fluid v-show="this.socket.connected" class="messageContainer">
           <div v-for="(msg, index) in messages" :key="index">
-            <v-alert :value="true" :color="msg.color">
+            <v-alert :value="true" :color="msg.color"
+            style="overflow-wrap: break-word !important;" height="auto">
               <b>{{ msg.user }}</b>
               {{ msg.message }}
             </v-alert>
@@ -82,7 +83,7 @@
           <v-flex xs10>
             <v-text-field
               :rules="this.rules"
-              maxlength="126"
+              maxlength="226"
               :color="this.userColor"
               v-model="message"
               append-outer-icon="send"
@@ -123,9 +124,8 @@ export default {
     userId: "",
     message: "",
     messages: [],
-    rules: [v => v.length <= 125 || 'Max 125 characters'],
-    //socket: io("https://api-parrot.herokuapp.com/")
-    socket: io()
+    rules: [v => v.length <= 225 || 'Max 225 characters'],
+    socket: io('https://parrot-chat-server.herokuapp.com/')
   }),
   methods: {
     sendMessage(e) {
@@ -231,9 +231,6 @@ export default {
   to {
     transform: rotate(360deg);
   }
-}
-div{
-  overflow-wrap: break-word !important;
 }
 
 </style>

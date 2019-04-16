@@ -1,29 +1,23 @@
-# parrot
+# Parrot: Simple chat application using VueJs, Vuetify, NodeJs, and SocketIo
 
-## Project setup
+## Project install:
 ```
+Open terminal in parrot current folder and run:
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Post install Run:
 ```
-npm run serve
+npm run server
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for production:
 ```
 npm run build
 ```
 
-### Run your tests
+### Online Heroku Demo:
 ```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+https://parrot-chat-server.herokuapp.com
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
