@@ -13,7 +13,7 @@
       <v-navigation-drawer v-model="drawer" app v-show="this.socket.connected">
         <v-list>
           <v-list-tile>
-            <v-list-tile-title class="title">Online Users</v-list-tile-title>
+            <v-list-tile-title class="title">Users Online</v-list-tile-title>
           </v-list-tile>
           <v-alert
             class="alert"
@@ -54,7 +54,7 @@
               </v-btn>
             </BreadcrumbItem>
           </template>
-          <span>See code on Github</span>
+          <span>View code on Github</span>
         </v-tooltip>
 
         <v-avatar>
