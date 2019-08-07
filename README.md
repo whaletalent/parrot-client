@@ -17,7 +17,6 @@ npm run build
 ```
 
 ### Online Heroku Demo:
-```
+
 https://parrot-chat-server.herokuapp.com
-```
 
